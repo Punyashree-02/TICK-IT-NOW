@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ movie.title }}</title>
+    {% include "navbar.html" %}
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to right, #9ce36b, #4deeea);
+            color: white;
+            margin: 0;
+            padding: 0;
+        }
+        .wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: black;
+            margin-top: 30px;
+            overflow: auto;
+            border-radius: 15px;
+            min-height: 500px; /* Adjust this value as needed */
+        }
+        .container {
+            margin-top: 20px;
+            display: flex;
+            align-items: flex-start;
+            background: black;
+            padding: 20px;
+            border-radius: 15px;
+        }
+        .poster {
+            width: 250px; /* fixed width */
+            height: 325px; /* fixed height */
+            object-fit: cover; /* cover the area without distorting the aspect ratio */
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            display: block; /* ensure block display */
+            margin-bottom: 20px; /* space between poster and button */
+        }
+        .movie-details {
+            margin-left: 20px;
+            max-width: 60%;
+        }
+        .movie-details h1 {
+            font-size: 2.5em;
+            font-weight: bold;
+        }
+        .movie-details p {
+            font-size: 1.1em;
+            margin: 10px 0;
+        }
+        .btn-book {
+            background-color: #ff4757;
+            color: white;
+            font-size: 1.2em;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        .btn-book:hover {
+            background-color: #e63946;
+        }
+        .about-movie {
+            margin-top: 20px; /* adjusted margin-top */
+            padding: 0 20px;
+        }
+        h2 {
+            font-size: 2em;
+            font-weight: bold;
+            color: #9ce36b;
+        }
+        .about-movie p {
+            font-size: 1.2em;
+            color: #ccc;
+        }
+        form {
+            display: inline;
+        }
+    </style>
+</head>
+<body>
+<div class="wrapper">
+    <div class="container">
+        <div>
+            <img src="{{ movie.poster.url }}" alt="{{ movie.title }} poster" class="poster">
+            <form action="{% url 'book_tickets' movie.pk %}" method="get">
+                <button type="submit" class="btn-book">Book tickets</button>
+            </form>
+        </div>
+        <div class="movie-details">
+            <h1>{{ movie.title }}</h1>
+            <p><strong>Release Date:</strong> {{ movie.release_year }}</p>
+            <p><strong>Language:</strong> {{ movie.language }}</p>
+            <p><strong>Duration:</strong> {{ movie.duration }}</p>
+            <p><strong>Genres:</strong> {{ movie.genre }}</p>
+            <p><strong>Rating:</strong> {{ movie.rating }}</p>
+            
+            <h2>Description</h2>
+            <p>{{ movie.description }}</p>
+        </div>
+    </div>
+</div>
+</body>
+</html>

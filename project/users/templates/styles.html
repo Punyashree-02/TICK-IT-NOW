@@ -1,0 +1,215 @@
+<style>
+    body, html {
+        margin: 0%;
+        padding: 0%;
+        height: 100vh;
+        width:100vw;
+        font-family: Arial, sans-serif;
+    }
+    
+    .container-fluid {
+        height: 100vh;
+    }
+    
+    .left-section {
+        background: linear-gradient(to right, #9ce36b, #4deeea);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        text-align: center;
+        color: #000;
+        height: 100vh;
+        width: 100vw;
+
+    }
+    
+    .right-section {
+        background-color: #212529;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #fff;
+        height: 100vh;
+        width: 100vw;
+    
+    }
+    
+    .logo {
+        width: 100%;
+        align-content: center;
+        display: flex;
+        justify-content: center;
+    }
+    
+    .login-form, .signup-form {
+        width: 100%;
+        max-width: 400px;
+    }
+    
+    .login-form h2, .signup-form h2 {
+        margin-bottom: 20px;
+        color: #fff;
+    }
+    
+    .form-control {
+        background-color: #343a40;
+        border: none;
+        color: white;
+    }
+    
+    .form-control::placeholder {
+        color: #6c757d;
+    }
+    
+    .btn-primary {
+        background: linear-gradient(to right, #9ce36b, #4deeea);
+        border: none;
+    }
+    
+    .btn-outline-dark {
+        border: 1px solid #343a40;
+        color: white;
+    }
+    
+    .btn-outline-dark:hover {
+        background-color: #343a40;
+        color: white;
+    }
+    
+    .navbar-brand img {
+        width: 30px;
+        height: 30px;
+    }
+    
+    .navbar-item {
+        margin-right: 15px;
+    }
+    
+    .profile-pic {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+    }
+    
+    .post-img, .fix-post-img {
+        width: 100%;
+        height: auto;
+    }
+    
+    .post-actions {
+        padding: 10px 0;
+    }
+    
+    .post-actions button {
+        border: none;
+        background: none;
+        cursor: pointer;
+        font-size: 20px;
+    }
+    
+    .profile-img {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+    }
+    
+    .profile-stat {
+        margin: 15px 0;
+    }
+    
+    .nav-tabs .nav-item {
+        width: 50%;
+        text-align: center;
+    }
+    
+    .post-card {
+        position: relative;
+    }
+    
+    .three-dots {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        cursor: pointer;
+    }
+    
+    .create-post-container {
+        max-width: 600px;
+        margin: 100px auto;
+        padding: 20px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+    }
+    
+    .create-post-logo img {
+        width: 100px;
+        margin-bottom: 20px;
+    }
+    
+    .profile-img-upload {
+        position: relative;
+        cursor: pointer;
+    }
+    
+    .profile-img-upload input[type="file"] {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        cursor: pointer;
+    }
+    
+    
+    
+    .comment-section {
+        height: 400px;
+        overflow-y: scroll;
+        border: 1px solid #ccc;
+        padding: 15px;
+    }
+    
+    .comment-input {
+        width: 100%;
+        padding: 10px;
+        margin-top: 15px;
+    }
+    
+    
+    .anchor {
+        text-decoration: none;
+        color: black;
+    }
+    
+    
+    .user-info {
+        display: flex;
+        align-items: center;
+    }
+    
+    .user-info img {
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        margin-right: 10px;
+    }
+    
+    .search-container form {
+        display: flex;
+        align-items: center;
+    }
+    
+    .search-input {
+        margin-right: 10px;
+    }
+    
+    .alert {
+        transition: opacity 0.5s ease-in-out;
+    }
+    
+    .alert.hide {
+        opacity: 0;
+    }
+    </style>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Profile</title>
+    {% include "navbar.html" %}
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to right, #9ce36b, #4deeea);
+            margin: 0;
+            padding: 0;
+        }
+
+       .navbar {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+
+       .navbar a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .container {
+            width: 80%;
+            margin-top: 5%;
+            max-width: 1200px;
+            padding: 10px; 
+            border-radius: 15px;
+            background-color: #fff;
+            border: 1px solid #0f0f0f;
+            box-shadow: 0 0 10px rgba(1, 1, 1, 0.936);
+            justify-content: space-between;
+        }
+       .profile-img-upload {
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+       .profile-img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto;
+        }
+
+       .profile-img-upload input[type="file"] {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+       .form-group {
+            margin-bottom: 20px;
+        }
+
+       .form-control {
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 100%;
+        }
+
+       .btn-primary {
+            background-color: black;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+       .btn-primary:hover {
+            background-color: #237c35;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="container">
+        <h2>Edit Profile</h2>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-group text-center">
+                <div class="profile-img-upload">
+                    {% if user.profile.has_profile_pic %}
+                    <img src="{{user.profile.profile_picture.url}}" class="profile-img" style="border: 1px solid grey;" alt="Profile Image">
+                    {% else %}
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/a/ac/Default_pfp.jpg" style="border:1px solid grey;"  class="profile-img" style="border: 1px solid grey;" alt="Profile Image">
+                    {% endif %}
+                    <input type="file" accept="image/*" name="profile_picture">
+                </div>
+                <small class="form-text text-muted">Click to change profile picture</small>
+            </div>
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" class="form-control" name="username" value="{{user.username}}">
+            </div>
+            <div class="form-group">
+                <label for="username">First Name</label>
+                <input type="text" class="form-control" name="first_name" value="{{user.first_name}}">
+            </div>
+            <div class="form-group">
+                <label for="username">Last Name</label>
+                <input type="text" class="form-control" name="last_name" value="{{user.last_name}}">
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" name="email" value="{{user.email}}">
+            </div>
+            
+            <button type="submit" class="btn btn-primary btn-block">Save Changes</button>
+        </form>
+    </div>
+</body>
+</html>

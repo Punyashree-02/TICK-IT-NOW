@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            padding-top: 70px; 
+            background: linear-gradient(to right, #9ce36b, #4deeea);
+        }
+        .container {
+            width: 95%; 
+            max-width: 1200px; 
+            margin-top: 20px; 
+        }
+        h1 {
+            margin-bottom: 20px;
+            color: #343a40; 
+            font-size: 2.5rem; 
+        }
+        .movie-container {
+            max-height: 80vh; 
+            overflow-y: auto; 
+            background-color: #0f0f0f; 
+            border-radius: 8px; 
+            border: 1px solid #dee2e6; 
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+            padding: 20px;
+        }
+        .movie-item {
+            display: flex;
+            align-items: flex-start; 
+            margin-bottom: 15px;
+            padding: 10px;
+            border-radius: 8px; 
+            background-color: #ffffff; 
+            border: 1px solid #dee2e6; 
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s; 
+        }
+        .movie-item:hover {
+            background-color: #f1f3f5; 
+        }
+        .poster {
+            width: 120px; 
+            height: 180px; 
+            object-fit: cover; 
+            border-radius: 15px; 
+            border: 1px solid #dee2e6; 
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s; 
+        }
+        .poster:hover {
+            transform: scale(1.05); 
+        }
+        .movie-details {
+            flex-grow: 1;
+            padding-left: 20px;
+        }
+        .movie-details h5 {
+            margin: 0 0 10px 0;
+            color: #495057; 
+            font-size: 1.25rem; 
+        }
+        .movie-details p {
+            margin: 0;
+            color: #6c757d; 
+        }
+        .movie-details p strong {
+            color: #343a40; 
+        }
+        .error-message, .no-results {
+            color: #dc3545; 
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    {% include "navbar.html" %}
+    <div class="container">
+        <h1>Search Results</h1>
+        <div class="movie-container">
+            {% if results %}
+                {% for movie in results %}
+                    <div class="movie-item">
+                        <div class="poster-container">
+                            <img src="{{ movie.poster.url }}" alt="{{ movie.title }} poster" class="poster">
+                        </div>
+                        <div class="movie-details">
+                            <h5>{{ movie.title }}</h5>
+                            <p><strong>Genre:</strong> {{ movie.genre }}</p>
+                            <p><strong>Release Date:</strong> {{ movie.release_year }}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p class="no-results">No results found.</p>
+            {% endif %}
+        </div>
+        {% if error_message %}
+            <p class="error-message">{{ error_message }}</p>
+        {% endif %}
+    </div>
+</body>
+</html>

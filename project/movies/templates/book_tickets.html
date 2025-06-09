@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Tickets for {{ movie.title }}</title>
+    {% include "navbar.html" %}
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to right, #9ce36b, #4deeea);
+            color: white;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            margin-top: 7px;
+            background-color: black;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+        h1 {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #ff4757;
+        }
+        .movie-info {
+            margin-top: 20px;
+        }
+        .movie-info p {
+            font-size: 1.2em;
+        }
+        .btn-confirm {
+            background-color: #ff4757;
+            color: white;
+            font-size: 1.2em;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+            display: block;
+            width: 100%;
+        }
+        .btn-confirm:hover {
+            background-color: #e63946;
+        }
+        select, input[type="date"] {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            margin-bottom: 20px;
+            background-color: white;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Book Tickets for {{ movie.title }}</h1>
+        <div class="movie-info">
+            <p><strong>Genre:</strong> {{ movie.genre }}</p>
+        </div>
+        <form action="{% url 'confirm_booking' movie.pk %}" method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="theater">Select Theater/show venue:</label>
+                <select id="theater" name="theater" required>
+                    <option value="">Select Theater</option>
+                    <option value="Cinepolis Esplanade">Cinepolis Esplanade</option>
+                    <option value="Keshari">Keshari</option>
+                    <option value="PVR:utkal kanika galleria">PVR:utkal kanika galleria</option>
+                    <option value="Inox:Dn regalia">Inox:Dn regalia</option>
+                    <option value="Rail auditorium">Rail auditorium</option>
+                    <option value="The Space:Patia">The Space:Patia</option>
+                    <option value="The Bocca Cafe">The Bocca Cafe</option>
+                    
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="time">Select Time:</label>
+                <select id="time" name="time" required>
+                    <option value="">Select Time</option>
+                    <option value="6:00 AM">6:00 AM</option>
+                    <option value="9:00 AM">9:00 AM</option>
+                    <option value="12:00 PM">12:00 PM</option>
+                    <option value="3:00 PM">3:00 PM</option>
+                    <option value="6:00 PM">6:00 PM</option>
+                    <option value="9:00 PM">9:00 PM</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="price">Select Price:</label>
+                <select id="price" name="price" required>
+                    <option value="">Select Price</option>
+                    <option value="200.00">Rs 200.00(NORMAL)</option>
+                    <option value="220.00">Rs 220.00(EXECUTIVE)</option>
+                    <option value="240.00">Rs 240.00(PREMIUM)</option>
+                    <option value="500.00">Rs 500.00(VIP)</option>
+                </select>
+            </div>
+            <button type="submit" class="btn-confirm">Confirm Booking</button>
+        </form>
+    </div>
+</body>
+</html>
