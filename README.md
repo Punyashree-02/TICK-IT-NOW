@@ -19,7 +19,7 @@ Tick It Now is a Django-based movie ticket booking app where users can browse mo
 ## **LOGIN FORM**
 <img width="1872" height="876" alt="Screenshot 2026-02-25 112832" src="https://github.com/user-attachments/assets/171e2ec5-cd52-42d1-949f-2ebb9ac46a30" />
 
-## **HOME PAGE- SHOWING RECOMMENED MOVIES AND SHOWS**
+## **HOME PAGE- SHOWING RECOMMENDED MOVIES AND SHOWS**
 <img width="1901" height="887" alt="Screenshot 2026-02-25 113000" src="https://github.com/user-attachments/assets/94b39a90-d9c4-4065-bd26-5416fad15270" />
 
 ## **MOVIES DESCRIPTIONS**
